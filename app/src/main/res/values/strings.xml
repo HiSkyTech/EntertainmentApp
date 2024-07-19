@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">EntertainmentApp</string>
-    <string-array name="categories_array">
-        <item>Category 1</item>
-        <item>Category 2</item>
-        <item>Category 3</item>
-        <item>Category 4</item>
-    </string-array>
+    <string name="huma_anwar">Huma Anwar</string>
+    <string name="huma01122_gmail_com">huma01122@gmail.com</string>
+    <string name="pswrd">*******</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="name">Name</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account">Already Have An Account?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="login">Login</string>
+
 </resources>
