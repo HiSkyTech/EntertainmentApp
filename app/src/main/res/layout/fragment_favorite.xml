@@ -2,11 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     android:layout_height="match_parent"
     tools:context=".Fragments.FavoriteFragment">
-<RelativeLayout
+<LinearLayout
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,6 +20,7 @@
             android:text="Favorites"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
+            android:textSize="18sp"
             android:fontFamily="@font/outfit_semibold"
             android:textColor="@color/white"/>
         <ImageView
@@ -45,9 +48,133 @@
             android:layout_alignParentBottom="true"
             android:background="@color/black"/>
     </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_height="170dp"
+    android:layout_marginStart="14dp"
+    android:orientation="horizontal">
+   <androidx.cardview.widget.CardView
+       android:layout_width="180dp"
+       android:layout_height="match_parent"
+       android:background="@color/Primary1">
+
+       <ImageView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:src="@drawable/bg_splash"/>
+   </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_marginStart="10dp"
+        android:layout_height="170dp"
+        android:orientation="vertical">
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:layout_width="200dp"
+        android:layout_height="90dp"
+        android:id="@+id/vid"
+        app:controller_layout_id="@layout/activity_videoplayer"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/outfit_light"
+            android:textColor="@color/Secondary1"
+            android:text="Episode description"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/outfit_extralight"
+            android:textColor="@color/Secondary1"
+            android:text="Drama Name"/>
 
 
-</RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+          <ProgressBar
+              android:layout_width="170dp"
+              android:layout_height="2dp"
+              android:layout_marginTop="6dp"
+              android:background="@color/Primary1"
+              android:id="@+id/progressbar"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/baseline_favorite_24"
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recently Added"
+            android:textColor="@color/Secondary1"
+            android:fontFamily="@font/outfit_bold"
+
+
+    </LinearLayout>
+
+</LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Favorite Playlists"
+    android:textColor="@color/white"
+    android:id="@+id/fav"
+    android:textSize="18sp"
+    android:layout_marginStart="10dp"
+    android:fontFamily="@font/outfit_semibold"
+    android:layout_marginTop="9dp"/>
+        <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="View More"
+    android:textColor="@color/white"
+    android:layout_alignParentEnd="true"
+         android:layout_marginEnd="30dp"
+    android:fontFamily="@font/outfit_extralight"
+    android:layout_marginTop="9dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_right_24"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="7dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fav"
+            android:id="@+id/favplalistrv"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="12dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favorites"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:id="@+id/favtext"
+            android:layout_below="@id/favplalistrv"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/outfit_semibold"
+            android:layout_marginTop="9dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/favtext"
+            android:id="@+id/favrv"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="12dp"/>
+    </RelativeLayout>
+</LinearLayout>
 
 
 </FrameLayout>
