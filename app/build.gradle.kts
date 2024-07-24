@@ -40,7 +40,7 @@ android {
 
 dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-   // implementation ("com.squareup.retrofit2:converter-gson")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation(libs.androidx.core.ktx)
     implementation("com.google.android.exoplayer:exoplayer:2.19.1")
     implementation(libs.androidx.appcompat)
