@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+     <item
+         android:id="@+id/nav_home"
+         android:icon="@drawable/icon_home"
+         android:title="Home" />
+     <item
+         android:id="@+id/nav_fav"
+         android:icon="@drawable/icon_favorite"
+         android:title="Favorite" />
+     <item
+         android:id="@+id/nav_download"
+         android:icon="@drawable/icon_download"
+         android:title="Downlaod" />
+     <item
+         android:id="@+id/nav_private"
+         android:icon="@drawable/baseline_lock_24"
+         android:title="Private Videos" />
+     <item
+         android:id="@+id/nav_profile"
+         android:icon="@drawable/icon_profile"
+         android:title="Profile" />
+</menu>

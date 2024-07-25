@@ -46,7 +46,6 @@
                     android:layout_height="wrap_content"
                     android:text="July 20,2024"
                     android:textColor="@color/white"
-                    android:layout_below="@id/txt"
                     android:fontFamily="@font/outfit_regular"
                     android:textSize="14sp"
                     android:layout_alignParentBottom="true"
@@ -78,3 +77,5 @@
             </RelativeLayout>
 
         </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
