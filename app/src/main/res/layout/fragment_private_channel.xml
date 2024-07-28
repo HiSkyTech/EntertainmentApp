@@ -2,13 +2,126 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragments.PrivateChannelFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_blank_fragment" />
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Private Videos"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/outfit_semibold"
+                android:textColor="@color/white"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_search"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black"/>
 
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_search"
+                android:layout_marginEnd="22dp"
+                android:layout_toLeftOf="@+id/noti"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black"/>
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/noti"
+                android:src="@drawable/icon_noti"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                app:tabTextColor="@color/white"
+                android:id="@+id/tab"
+                app:tabIndicator="@drawable/splash_button_bg"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_edittext"
+                android:layout_height="40dp"
+                >
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editors Picks"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unlocked"/>
+
+            </com.google.android.material.tabs.TabLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/icon"
+                android:layout_marginTop="20dp"
+                android:layout_alignRight="@id/tab"
+                android:src="@drawable/baseline_more_vert_24"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recently Unlocked"
+                android:textColor="@color/white"
+                android:id="@+id/recent"
+                android:layout_below="@id/tab"
+                android:textSize="18sp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/outfit_semibold"
+                android:layout_marginTop="9dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/recent"
+                android:id="@+id/recentlyunlockedrv"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="12dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editor's Pick"
+                android:textColor="@color/white"
+                android:id="@+id/edit"
+                android:layout_below="@id/recentlyunlockedrv"
+                android:textSize="18sp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/outfit_semibold"
+                android:layout_marginTop="9dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/favplalistrv"
+                android:layout_below="@id/edit"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="12dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
 </FrameLayout>
