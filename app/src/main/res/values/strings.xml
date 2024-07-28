@@ -10,5 +10,6 @@
     <string name="already_have_an_account">Already Have An Account?</string>
     <string name="sign_in">Sign in</string>
     <string name="login">Login</string>
+    <string name="track_selection_title">Video Quality</string>
 
 </resources>

@@ -11,8 +11,18 @@ import com.bumptech.glide.Glide
 import com.urdubolo.com.pk.Model.ModelDramaItem
 import com.urdubolo.com.pk.R
 
-class AdapterDrama(private val dramaList: List<ModelDramaItem>,var context: Context) :
+class AdapterDrama(private val dramaList: List<ModelDramaItem>,var context: Context,var listener:ItemcClicklistner) :
     RecyclerView.Adapter<AdapterDrama.DramaViewHolder>() {
+
+
+
+
+        interface ItemcClicklistner
+        {
+            fun OnitemClick(dramaId: String)
+        }
+
+
 
     inner class DramaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val dramaThumbnail: ImageView = itemView.findViewById(R.id.dramaBanner)
@@ -29,8 +39,11 @@ class AdapterDrama(private val dramaList: List<ModelDramaItem>,var context: Cont
         val currentItem = dramaList[position]
         val fullUrl = "https://hiskytechs.com/video_adminpenal/${currentItem.thumbnail}"
         Glide.with(context).load(fullUrl).
-        placeholder(R.drawable.logoimg).error(R.drawable.logoimg).into(holder.dramaThumbnail);
-
+        placeholder(R.drawable.logoimg).error(R.drawable.logoimg).into(holder.dramaThumbnail)
+holder.dramaThumbnail.setOnClickListener()
+{
+    listener.OnitemClick(currentItem.id)
+}
 
     }
 
