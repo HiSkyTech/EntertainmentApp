@@ -37,8 +37,8 @@
 
     <ImageView
         android:id="@+id/backExo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/back_arrow"
@@ -165,8 +165,8 @@
 
     <ImageView
         android:id="@+id/exo_play"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/exo_ic_play_circle_filled"
         app:layout_constraintBottom_toBottomOf="@+id/exo_pause"
         app:layout_constraintEnd_toEndOf="@+id/exo_pause"
@@ -178,8 +178,8 @@
 
     <ImageView
         android:id="@+id/exo_pause"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/exo_ic_pause_circle_filled"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -193,8 +193,8 @@
 
     <ImageView
         android:id="@+id/fwd"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="64dp"
         android:scaleType="centerCrop"
         android:src="@drawable/forword_10"
@@ -247,8 +247,8 @@
 
     <ImageView
         android:id="@+id/rew"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="64dp"
         android:scaleType="centerCrop"
         android:src="@drawable/replay"

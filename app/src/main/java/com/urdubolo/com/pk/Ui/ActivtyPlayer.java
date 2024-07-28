@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,6 +92,11 @@ public class ActivtyPlayer extends AppCompatActivity {
         ImageView rewindBtn = playerView.findViewById(R.id.rew);
         ImageView speedBtn = playerView.findViewById(R.id.exo_playback_speed);
         ImageView fullscreenBtn = playerView.findViewById(R.id.fullscreen);
+        ImageView exoplayer_resize1 = playerView.findViewById(R.id.exoplayer_resize1);
+        ImageView exoplayer_resize2 = playerView.findViewById(R.id.exoplayer_resize2);
+        ImageView exoplayer_resize3 = playerView.findViewById(R.id.exoplayer_resize3);
+        ImageView exoplayer_resize4 = playerView.findViewById(R.id.exoplayer_resize4);
+        ImageView exoplayer_resize5 = playerView.findViewById(R.id.exoplayer_resize5);
         ImageView backBtn = playerView.findViewById(R.id.backExo);
         ImageView quality = playerView.findViewById(R.id.exo_track_selection_view);
 
@@ -120,6 +126,77 @@ public class ActivtyPlayer extends AppCompatActivity {
                 trackSelectionDialog.show(getSupportFragmentManager(), null);
             } else {
                 Log.d(TAG, "TrackSelectionDialog not shown");
+            }
+        });
+        exoplayer_resize1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exoplayer_resize1.setVisibility(View.GONE);
+                exoplayer_resize2.setVisibility(View.VISIBLE);
+                exoplayer_resize3.setVisibility(View.GONE);
+                exoplayer_resize4.setVisibility(View.GONE);
+                exoplayer_resize5.setVisibility(View.GONE);
+
+                playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FILL);
+                Toast.makeText(ActivtyPlayer.this, "Fill Mode", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+        exoplayer_resize2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exoplayer_resize1.setVisibility(View.GONE);
+                exoplayer_resize2.setVisibility(View.GONE);
+                exoplayer_resize3.setVisibility(View.VISIBLE);
+                exoplayer_resize4.setVisibility(View.GONE);
+                exoplayer_resize5.setVisibility(View.GONE);
+
+                playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
+                Toast.makeText(ActivtyPlayer.this, "Fit Mode", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+        exoplayer_resize3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exoplayer_resize1.setVisibility(View.GONE);
+                exoplayer_resize2.setVisibility(View.GONE);
+                exoplayer_resize3.setVisibility(View.GONE);
+                exoplayer_resize4.setVisibility(View.VISIBLE);
+                exoplayer_resize5.setVisibility(View.GONE);
+
+                playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM);
+                Toast.makeText(ActivtyPlayer.this, "Zoom Mode", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        exoplayer_resize4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exoplayer_resize1.setVisibility(View.GONE);
+                exoplayer_resize2.setVisibility(View.GONE);
+                exoplayer_resize3.setVisibility(View.GONE);
+                exoplayer_resize4.setVisibility(View.GONE);
+                exoplayer_resize5.setVisibility(View.VISIBLE);
+                playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIXED_HEIGHT);
+                Toast.makeText(ActivtyPlayer.this, "Fixed Height", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        exoplayer_resize5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exoplayer_resize1.setVisibility(View.VISIBLE);
+                exoplayer_resize2.setVisibility(View.GONE);
+                exoplayer_resize3.setVisibility(View.GONE);
+                exoplayer_resize4.setVisibility(View.GONE);
+                exoplayer_resize5.setVisibility(View.GONE);
+
+                playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIXED_WIDTH);
+                Toast.makeText(ActivtyPlayer.this, "Fixed Width", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -152,7 +229,7 @@ public class ActivtyPlayer extends AppCompatActivity {
                 .build();
 
         playerView.setPlayer(simpleExoPlayer);
-        playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
+        playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIXED_WIDTH);
 
         MediaItem mediaItem = MediaItem.fromUri("https://hiskytechs.com/video_adminpenal/"+videoUrl);
         simpleExoPlayer.setMediaItem(mediaItem);
