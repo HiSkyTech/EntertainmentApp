@@ -7,23 +7,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Ui.MainActivity">
+
     <FrameLayout
         android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="65dp"
-    app:cardCornerRadius="13dp"
-    android:layout_alignParentBottom="true"
-    android:layout_margin="10dp">
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_height="match_parent"
+        android:layout_above="@id/tabs"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/Tertiary3"
-        app:menu="@menu/nav_bottom"
-        android:id="@+id/bottomnavigation"/>
-</androidx.cardview.widget.CardView>
+        app:tabGravity="fill"
+        app:tabMode="fixed"/>
 
-
-  </RelativeLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tabs"/>
+</RelativeLayout>

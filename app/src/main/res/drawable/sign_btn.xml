@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <shape android:shape="rectangle">
+      <solid android:color="@color/white" /> <!-- Orange color -->
+      <corners android:radius="8dp" /> <!-- Rounded corners -->
+    </shape>
+  </item>
+  <item android:bottom="4dp"> <!-- Adjust the stroke height -->
+    <shape android:shape="rectangle">
+      <solid android:color="#FFA500" /> <!-- White bottom stroke -->
+      <corners android:radius="8dp" /> <!-- Match the same radius -->
+    </shape>
+  </item>
+</layer-list>

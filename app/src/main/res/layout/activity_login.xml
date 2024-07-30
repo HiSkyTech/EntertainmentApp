@@ -48,7 +48,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-
+android:layout_gravity="center"
+                android:layout_marginEnd="-10dp"
                 android:layout_marginStart="10dp"
                 app:cardCornerRadius="50dp">
                 <ImageView
@@ -61,11 +62,11 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_edittext"
+                android:background="@drawable/et_bg"
+                android:paddingStart="30dp"
                 android:hint="@string/huma01122_gmail_com"
                 android:textColorHint="@color/white"
-                android:fontFamily="@font/outfit_medium"
-                android:paddingStart="20dp"/>
+                android:fontFamily="@font/outfit_light"/>
         </LinearLayout><TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,7 +82,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-
+android:layout_marginEnd="-10dp"
+                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 app:cardCornerRadius="50dp">
                 <ImageView
@@ -94,21 +96,22 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_edittext"
+                android:background="@drawable/et_bg"
                 android:inputType="textPassword"
                 android:hint="@string/pswrd"
                 android:textColorHint="@color/white"
-                android:fontFamily="@font/outfit_medium"
-                android:paddingStart="20dp"/>
+                android:fontFamily="@font/outfit_light"
+                android:paddingStart="30dp"/>
         </LinearLayout>
 
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/Primary1"
+           android:background="@drawable/sign_btn"
             android:layout_marginTop="20dp"
             android:fontFamily=""
+
             android:text="Sign In"
             android:layout_gravity="center_horizontal"
             app:cornerRadius="10dp"/>

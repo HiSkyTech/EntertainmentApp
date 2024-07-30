@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="19dp"
     android:background="@drawable/signin_bg"
     tools:context=".Ui.ActivitySignUp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/black"
             android:src="@drawable/baseline_arrow_back_ios_24"
-                android:layout_marginTop="10dp"/>
+            android:layout_margin="10dp"/>
 
         <ImageView
             android:layout_width="200dp"
@@ -45,7 +49,8 @@
          <androidx.cardview.widget.CardView
              android:layout_width="40dp"
              android:layout_height="40dp"
-
+android:layout_marginEnd="-10dp"
+             android:layout_gravity="center"
              android:layout_marginStart="10dp"
                  app:cardCornerRadius="50dp">
          <ImageView
@@ -58,12 +63,11 @@
          <EditText
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-                 android:background="@drawable/bg_edittext"
-
+                 android:background="@drawable/et_bg"
                  android:hint="@string/huma_anwar"
                  android:textColorHint="@color/white"
-                 android:fontFamily="@font/outfit_medium"
-               android:paddingStart="20dp"/>
+                 android:fontFamily="@font/outfit_light"
+               android:paddingStart="25dp"/>
  </LinearLayout>
     <TextView
     android:layout_width="wrap_content"
@@ -80,7 +84,8 @@
          <androidx.cardview.widget.CardView
              android:layout_width="40dp"
              android:layout_height="40dp"
-
+             android:layout_marginEnd="-10dp"
+             android:layout_gravity="center"
              android:layout_marginStart="10dp"
                  app:cardCornerRadius="50dp">
          <ImageView
@@ -93,11 +98,11 @@
          <EditText
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-                 android:background="@drawable/bg_edittext"
+             android:background="@drawable/et_bg"
                  android:hint="@string/huma01122_gmail_com"
                  android:textColorHint="@color/white"
                  android:fontFamily="@font/outfit_medium"
-               android:paddingStart="20dp"/>
+               android:paddingStart="25dp"/>
  </LinearLayout><TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -114,6 +119,8 @@
              android:layout_width="40dp"
              android:layout_height="40dp"
 
+             android:layout_marginEnd="-10dp"
+             android:layout_gravity="center"
              android:layout_marginStart="10dp"
                  app:cardCornerRadius="50dp">
          <ImageView
@@ -126,12 +133,12 @@
          <EditText
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-                 android:background="@drawable/bg_edittext"
+             android:background="@drawable/et_bg"
               android:inputType="textPassword"
                  android:hint="@string/pswrd"
                  android:textColorHint="@color/white"
                  android:fontFamily="@font/outfit_medium"
-               android:paddingStart="20dp"/>
+               android:paddingStart="25dp"/>
  </LinearLayout>
     <TextView
     android:layout_width="wrap_content"
@@ -149,6 +156,8 @@
              android:layout_width="40dp"
              android:layout_height="40dp"
 
+             android:layout_marginEnd="-10dp"
+             android:layout_gravity="center"
              android:layout_marginStart="10dp"
                  app:cardCornerRadius="50dp">
          <ImageView
@@ -161,22 +170,21 @@
          <EditText
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-                 android:background="@drawable/bg_edittext"
+             android:background="@drawable/et_bg"
              android:inputType="textPassword"
              android:hint="@string/pswrd"
                  android:textColorHint="@color/white"
                  android:fontFamily="@font/outfit_medium"
                android:paddingStart="20dp"/>
  </LinearLayout>
-   <com.google.android.material.button.MaterialButton
+   <androidx.appcompat.widget.AppCompatButton
        android:layout_width="260dp"
-       android:layout_height="wrap_content"
-       android:backgroundTint="@color/Primary1"
-       android:layout_marginTop="20dp"
+       android:layout_height="50dp"
+     android:background="@drawable/sign_btn"
+       android:layout_gravity="center"
+       android:layout_marginTop="25dp"
        android:fontFamily=""
-       android:text="@string/create_account"
-       android:layout_gravity="center_horizontal"
-       app:cornerRadius="10dp"/>
+       android:text="@string/create_account"/>
      <LinearLayout
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
@@ -195,3 +203,5 @@
              android:text="@string/sign_in"/>
      </LinearLayout>
 </LinearLayout>
+
+</ScrollView>

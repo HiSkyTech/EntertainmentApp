@@ -2,15 +2,9 @@ package com.urdubolo.com.pk.Ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.urdubolo.com.pk.Fragments.DownloadFragment
-import com.urdubolo.com.pk.Fragments.FavoriteFragment
-import com.urdubolo.com.pk.Fragments.HomeFragment
-import com.urdubolo.com.pk.Fragments.PrivateChannelFragment
-import com.urdubolo.com.pk.Fragments.ProfileFragment
+import com.google.android.material.tabs.TabLayoutMediator
 import com.urdubolo.com.pk.R
 import com.urdubolo.com.pk.databinding.ActivityMainBinding
-import com.urdubolo.com.pk.databinding.FragmentPrivateChannelBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -19,42 +13,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(HomeFragment())
-        binding.bottomnavigation.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.nav_home -> {
-                    replaceFragment(HomeFragment())
 
-                }
-                R.id.nav_fav -> {
-                    replaceFragment(FavoriteFragment())
+        val viewPagerAdapter = ViewPagerAdapter(this)
+        binding.viewPager.adapter = viewPagerAdapter
 
-                }
-                R.id.nav_download -> {
-                    replaceFragment(DownloadFragment())
-
-                }
-                R.id.nav_private -> {
-                    replaceFragment(PrivateChannelFragment())
-
-                }
-                R.id.nav_profile -> {
-                    replaceFragment(ProfileFragment())
-
-                }
-
+        val tabLayoutMediator = TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Home"
+                1 -> tab.text = "Favorite"
+                2 -> tab.text = "Download"
+                3 -> tab.text = "Private"
+                4 -> tab.text = "Profile"
             }
-            true
-
-
         }
-
-
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.nav_host_fragment, fragment)
-            .commit()
+        tabLayoutMediator.attach()
     }
 }
