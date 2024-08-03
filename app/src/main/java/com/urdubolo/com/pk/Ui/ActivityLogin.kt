@@ -68,7 +68,7 @@ class ActivityLogin : AppCompatActivity() {
                             MySharedPref.saveUserModel(userData)
                             MySharedPref.saveUserLoggedIn()
                             startActivity(Intent(this@ActivityLogin, MainActivity::class.java))
-                            finish()
+                            finishAffinity()
                         } else {
                             Toast.makeText(this@ActivityLogin, "Already Logged In on another device", Toast.LENGTH_SHORT).show()
                         }

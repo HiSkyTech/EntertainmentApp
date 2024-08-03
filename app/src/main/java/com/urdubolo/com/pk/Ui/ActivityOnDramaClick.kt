@@ -15,6 +15,7 @@ import com.urdubolo.com.pk.Interfaces.SeasonIdRequest
 import com.urdubolo.com.pk.Model.ModelEpisodeItem
 import com.urdubolo.com.pk.Model.ModelSeasonItem
 import com.urdubolo.com.pk.Model.RetrofitClient
+import com.urdubolo.com.pk.Util.UtilAnimation
 import com.urdubolo.com.pk.databinding.ActivityOnDramaClickBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,21 +25,21 @@ class ActivityOnDramaClick : AppCompatActivity(), AdapterDramaVideoSeasons.Itemc
 
     private lateinit var apiInterface: ApiInterFace
     private lateinit var binding: ActivityOnDramaClickBinding
-
+private lateinit var utilAnimation: UtilAnimation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOnDramaClickBinding.inflate(layoutInflater)
         setContentView(binding.root)
         apiInterface = RetrofitClient.apiInterface
-
+utilAnimation=UtilAnimation(this@ActivityOnDramaClick)
         val dramaId = intent.getStringExtra("dramaId")?.toIntOrNull() ?: return
 
-        Toast.makeText(this@ActivityOnDramaClick, dramaId.toString(), Toast.LENGTH_SHORT).show()
         val dramaIdRequest = DramaIdRequest(dramaId)
         val call = apiInterface.getDramaSeasons(dramaIdRequest)
-
+utilAnimation.startLoadingAnimation()
         call.enqueue(object : Callback<List<ModelSeasonItem>> {
             override fun onResponse(call: Call<List<ModelSeasonItem>>, response: Response<List<ModelSeasonItem>>) {
+                utilAnimation.endLoadingAnimation()
                 if (response.isSuccessful) {
                     val seasonList = ArrayList(response.body() ?: emptyList())
 
@@ -57,6 +58,9 @@ class ActivityOnDramaClick : AppCompatActivity(), AdapterDramaVideoSeasons.Itemc
             }
 
             override fun onFailure(call: Call<List<ModelSeasonItem>>, t: Throwable) {
+                utilAnimation.endLoadingAnimation()
+                binding.rvSeasons.adapter = AdapterDramaVideoSeasons(emptyList(), this@ActivityOnDramaClick, this@ActivityOnDramaClick)
+
                 Log.e("TAG", t.toString())
                 Toast.makeText(this@ActivityOnDramaClick, "Failure", Toast.LENGTH_SHORT).show()
             }
@@ -65,11 +69,13 @@ class ActivityOnDramaClick : AppCompatActivity(), AdapterDramaVideoSeasons.Itemc
 
     private fun loadEpisodesForSeason(seasonId: String, seasonNo: String) {
         val seasonIdRequest = SeasonIdRequest(seasonId.toInt())
-
+utilAnimation.startLoadingAnimation()
         val call = apiInterface.getSeasonsEpisodes(seasonIdRequest)
 
         call.enqueue(object : Callback<List<ModelEpisodeItem>> {
             override fun onResponse(call: Call<List<ModelEpisodeItem>>, response: Response<List<ModelEpisodeItem>>) {
+                utilAnimation.endLoadingAnimation()
+
                 if (response.isSuccessful) {
                     val episodeList = ArrayList(response.body() ?: emptyList())
 
@@ -81,8 +87,11 @@ class ActivityOnDramaClick : AppCompatActivity(), AdapterDramaVideoSeasons.Itemc
             }
 
             override fun onFailure(call: Call<List<ModelEpisodeItem>>, t: Throwable) {
+                utilAnimation.endLoadingAnimation()
+                binding.rvEpisodes.adapter = AdapterEpisodes(seasonNo, emptyList(), this@ActivityOnDramaClick, this@ActivityOnDramaClick)
+
                 Log.e("TAG", t.toString())
-                Toast.makeText(this@ActivityOnDramaClick, "Failure", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ActivityOnDramaClick, "No Data", Toast.LENGTH_SHORT).show()
             }
         })
     }

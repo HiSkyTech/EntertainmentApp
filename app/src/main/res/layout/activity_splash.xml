@@ -36,12 +36,20 @@
         android:text="Get Started"
         android:layout_gravity="center_horizontal"
         app:cornerRadius="10dp"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="65dp"
+       android:scaleType="centerCrop"
+        android:src="@drawable/poweredby1"
+        android:layout_marginVertical="10dp"
+        android:layout_gravity="center"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="www.urdubolo.pk"
-        android:layout_gravity="center"
-        android:layout_marginVertical="30dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:textColor="@color/Primary2"/>
-
 </LinearLayout>

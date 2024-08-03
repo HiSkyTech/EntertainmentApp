@@ -10,9 +10,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/logoimg"
+        android:icon="@mipmap/logo_bg"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/logoimg"
+        android:roundIcon="@mipmap/logo_bg"
         android:supportsRtl="true"
         android:theme="@style/Theme.EntertainmentApp"
         tools:targetApi="31">

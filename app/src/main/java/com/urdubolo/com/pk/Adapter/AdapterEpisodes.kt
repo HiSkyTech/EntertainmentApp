@@ -57,6 +57,17 @@ class AdapterEpisodes(private  var seasonNo:String,private val episodeList: List
             placeholder(R.drawable.logoimg).error(R.drawable.logoimg).into(holder.episodeThumbnail)
         }
 
+        if(seasonNo=="Assigned")
+        {
+            holder.date.text=currentItem.created_at.toString()
+            holder.episodeNo.text=currentItem.episode_number.toString()
+            holder.description.text=currentItem.description
+            holder.seasonNo.text="null"
+            val fullUrl = "https://hiskytechs.com/video_adminpenal/${currentItem.thumbnail}"
+            Glide.with(context).load(fullUrl).
+            placeholder(R.drawable.logoimg).error(R.drawable.logoimg).into(holder.episodeThumbnail)
+        }
+
         holder.layEpisode.setOnClickListener()
         {
             listener.OnVideoitemClick(currentItem.video_path.toString())

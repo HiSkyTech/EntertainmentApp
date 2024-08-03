@@ -43,5 +43,9 @@ object MySharedPref {
     {
         return sharedPreferences.getBoolean("IsLoggedIn",false)
     }
-
+fun clearPreferences()
+{
+    editor.clear()
+    editor.apply()
+}
 }

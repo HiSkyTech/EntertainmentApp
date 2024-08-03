@@ -1,60 +1,123 @@
 package com.urdubolo.com.pk.Fragments
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.urdubolo.com.pk.Interfaces.ApiInterFace
+import com.urdubolo.com.pk.Interfaces.UserLogoutId
+import com.urdubolo.com.pk.Model.ModelLogoutResponse
+import com.urdubolo.com.pk.Model.RetrofitClient
 import com.urdubolo.com.pk.R
+import com.urdubolo.com.pk.Ui.ActivityLogin
+import com.urdubolo.com.pk.Util.MySharedPref
+import com.urdubolo.com.pk.databinding.FragmentProfileBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var apiInterface: ApiInterFace
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        setData()
+        apiInterface = RetrofitClient.apiInterface
+
+        binding.apply {
+            cvAbout.setOnClickListener {
+                Toast.makeText(requireContext(), "Available Soon!!", Toast.LENGTH_SHORT).show()
+            }
+            cvTerms.setOnClickListener {
+                Toast.makeText(requireContext(), "Available Soon!!", Toast.LENGTH_SHORT).show()
+            }
+            cvLogout.setOnClickListener {
+                showLogoutConfirmationDialog()
+            }
+            search.setOnClickListener {
+                Toast.makeText(requireContext(), "Available Soon!!", Toast.LENGTH_SHORT).show()
+            }
+            imgbell.setOnClickListener {
+                Toast.makeText(requireContext(), "Available Soon!!", Toast.LENGTH_SHORT).show()
+            }
+        }
+        return binding.root
+    }
+
+    private fun setData() {
+        val userData = MySharedPref.getUserModel()!!
+
+        binding.apply {
+            tvUserEmail.text = userData.email
+            tvName1.text = userData.username
+            tvUserName.text = userData.username
+            val fullUrl = "https://hiskytechs.com/video_adminpenal/${userData.profile_image}"
+            Glide.with(requireContext()).load(fullUrl)
+                .placeholder(R.drawable.logoimg)
+                .error(R.drawable.logoimg)
+                .into(imgProfile)
+        }
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Yes") { dialog, which ->
+                handleLogout()
+            }
+            .setNegativeButton("No", null)
+            .show()
+    }
+
+    private fun handleLogout() {
+        val userId = MySharedPref.getUserModel()?.id
+        if (userId != null) {
+            apiInterface.logoutUser(UserLogoutId(userId)).enqueue(object : Callback<ModelLogoutResponse> {
+                override fun onResponse(call: Call<ModelLogoutResponse>, response: Response<ModelLogoutResponse>) {
+                    if (response.isSuccessful) {
+                        val logoutResponse = response.body()
+                        if (logoutResponse != null) {
+                            Toast.makeText(requireContext(), logoutResponse.message, Toast.LENGTH_SHORT).show()
+                            MySharedPref.clearPreferences()
+
+                            val intent = Intent(requireContext(), ActivityLogin::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                            requireActivity().finish()
+                        } else {
+                            Toast.makeText(requireContext(), "Logout failed. Please try again.", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Log.d(TAG, "Failed to logout: ${response.code()} - ${response.message()}")
+                        Toast.makeText(requireContext(), "Failed to logout", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<ModelLogoutResponse>, t: Throwable) {
+                    Log.e(TAG, "Error during logout: ${t.message}")
+                    Toast.makeText(requireContext(), "Error during logout", Toast.LENGTH_SHORT).show()
+                }
+            })
+        } else {
+            Toast.makeText(requireContext(), "User ID not found", Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        private const val TAG = "ProfileFragment"
     }
 }

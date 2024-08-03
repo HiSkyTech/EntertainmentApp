@@ -24,6 +24,7 @@ import com.urdubolo.com.pk.R
 import com.urdubolo.com.pk.Ui.ActivityDramaViewMore
 import com.urdubolo.com.pk.Ui.ActivityOnDramaClick
 import com.urdubolo.com.pk.Ui.ActivitySeasonsViewMore
+import com.urdubolo.com.pk.Util.MySharedPref
 import com.urdubolo.com.pk.Util.UtilAnimation
 import com.urdubolo.com.pk.databinding.FragmentHomeBinding
 import retrofit2.Call
@@ -96,9 +97,14 @@ setupPlayer()
         utilAnimation.startLoadingAnimation()
         Handler(Looper.getMainLooper()).postDelayed({
         utilAnimation.endLoadingAnimation()
-        }, 5000)
+        }, 6000)
 
         apiInterface = RetrofitClient.apiInterface
+        val fullUrl = "https://hiskytechs.com/video_adminpenal/${MySharedPref.getUserModel()?.profile_image}"
+        Glide.with(requireContext()).load(fullUrl)
+            .placeholder(R.drawable.logoimg)
+            .error(R.drawable.logoimg)
+            .into(binding.ivProfile)
 
         // Get dramas
         getDramas()
