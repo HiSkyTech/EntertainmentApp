@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
         val tabLayoutMediator = TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             when (position) {
                 0 -> tab.text = "Home"
-                1 -> tab.text = "Favorite"
-                2 -> tab.text = "Download"
-                3 -> tab.text = "Private"
-                4 -> tab.text = "Profile"
+                1 -> tab.text = "Private"
+                2 -> tab.text = "Profile"
+              /*  3 -> tab.text = "Private"
+                4 -> tab.text = "Profile"*/
             }
         }
         tabLayoutMediator.attach()

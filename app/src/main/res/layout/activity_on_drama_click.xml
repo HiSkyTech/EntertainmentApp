@@ -13,17 +13,52 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:layout_below="@id/rvSeasons"
+       android:layout_below="@id/tvepi"
+
         android:layout_margin="10dp"
 android:id="@+id/rvEpisodes"/>
-    <androidx.recyclerview.widget.RecyclerView
+
+    <ImageView
+        android:id="@+id/ivbackArrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:padding="10dp"
+        android:src="@drawable/icon_back_arrow" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+
+        android:text="Click on Season to see Its Episodes"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:fontFamily="@font/urbanist_extrabold"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+      android:layout_marginVertical="10dp"
+        android:layout_below="@id/ivbackArrow"
 
 android:id="@+id/rvSeasons"/>
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+android:layout_centerInParent="true"
+        android:text="Episodes of Selected Season"
+        android:textColor="@color/white"
+        android:layout_below="@id/rvSeasons"
+        android:id="@+id/tvepi"
+        android:textStyle="bold"
+        android:fontFamily="@font/urbanist_extrabold"/>
 </RelativeLayout>

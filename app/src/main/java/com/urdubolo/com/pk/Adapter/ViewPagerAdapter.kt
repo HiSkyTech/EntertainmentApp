@@ -9,8 +9,8 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
 
     private val fragments = listOf(
         HomeFragment(),
-        FavoriteFragment(),
-        DownloadFragment(),
+      //  FavoriteFragment(),
+       // DownloadFragment(),
         PrivateChannelFragment(),
         ProfileFragment()
     )

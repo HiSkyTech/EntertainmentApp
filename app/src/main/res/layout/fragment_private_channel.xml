@@ -13,6 +13,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:visibility="gone"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
@@ -55,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 app:tabTextColor="@color/white"
+                android:visibility="gone"
                 android:id="@+id/tab"
                 app:tabIndicator="@drawable/splash_button_bg"
                 android:layout_marginStart="10dp"
@@ -82,6 +84,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
                 android:id="@+id/icon"
+                android:visibility="gone"
                 android:layout_marginTop="20dp"
                 android:layout_alignRight="@id/tab"
                 android:src="@drawable/baseline_more_vert_24"/>
@@ -97,7 +100,7 @@
                 android:fontFamily="@font/outfit_semibold"
                 android:layout_marginTop="9dp"/>
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/recent"
                 android:id="@+id/recentlyunlockedrv"
@@ -117,7 +120,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/favplalistrv"
+                android:id="@+id/rvEditorPicks"
                 android:layout_below="@id/edit"
                 android:layout_marginTop="6dp"
                 android:layout_marginStart="12dp"/>

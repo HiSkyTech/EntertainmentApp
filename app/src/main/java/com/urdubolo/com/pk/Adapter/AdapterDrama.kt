@@ -26,6 +26,7 @@ class AdapterDrama(private val dramaList: List<ModelDramaItem>,var context: Cont
 
     inner class DramaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val dramaThumbnail: ImageView = itemView.findViewById(R.id.dramaBanner)
+        val dramaName: TextView = itemView.findViewById(R.id.tvDramaName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DramaViewHolder {
@@ -37,6 +38,7 @@ class AdapterDrama(private val dramaList: List<ModelDramaItem>,var context: Cont
     override fun onBindViewHolder(holder: DramaViewHolder, position: Int) {
 
         val currentItem = dramaList[position]
+        holder.dramaName.text=currentItem.name
         val fullUrl = "https://hiskytechs.com/video_adminpenal/${currentItem.thumbnail}"
         Glide.with(context).load(fullUrl).
         placeholder(R.drawable.logoimg).error(R.drawable.logoimg).into(holder.dramaThumbnail)

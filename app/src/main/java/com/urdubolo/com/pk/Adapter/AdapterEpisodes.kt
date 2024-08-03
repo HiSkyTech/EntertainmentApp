@@ -15,7 +15,7 @@ import com.urdubolo.com.pk.Model.ModelEpisodeItem
 import com.urdubolo.com.pk.Model.ModelSeasonItem
 import com.urdubolo.com.pk.R
 
-class AdapterEpisodes(private val episodeList: List<ModelEpisodeItem>,var context: Context,var listener:EpisodeItemClicklistner) :
+class AdapterEpisodes(private  var seasonNo:String,private val episodeList: List<ModelEpisodeItem>,var context: Context,var listener:EpisodeItemClicklistner) :
     RecyclerView.Adapter<AdapterEpisodes.DramaViewHolder>() {
 
 
@@ -30,26 +30,33 @@ class AdapterEpisodes(private val episodeList: List<ModelEpisodeItem>,var contex
 
     inner class DramaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val episodeThumbnail: ImageView = itemView.findViewById(R.id.thumbnail)
-         val dramaName: TextView = itemView.findViewById(R.id.tvDramaName)
+         val seasonNo: TextView = itemView.findViewById(R.id.tvSeasonNo)
         val layEpisode: RelativeLayout = itemView.findViewById(R.id.layEpisode)
         val description: TextView = itemView.findViewById(R.id.tvDescription)
+        val episodeNo: TextView = itemView.findViewById(R.id.tvEpisodeNumber)
         val date: TextView = itemView.findViewById(R.id.tvDate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DramaViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_episode, parent, false)
+            .inflate(R.layout.item_season_episode, parent, false)
         return DramaViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: DramaViewHolder, position: Int) {
 
         val currentItem = episodeList[position]
-holder.date.text=currentItem.created_at.toString()
-        holder.description.text=currentItem.description
-    val fullUrl = "https://hiskytechs.com/video_adminpenal/${currentItem.thumbnail}"
+        if(currentItem.privacy != "private")
+        {
+            holder.date.text=currentItem.created_at.toString()
+            holder.episodeNo.text=currentItem.episode_number.toString()
+            holder.description.text=currentItem.description
+            holder.seasonNo.text=seasonNo
+            val fullUrl = "https://hiskytechs.com/video_adminpenal/${currentItem.thumbnail}"
             Glide.with(context).load(fullUrl).
             placeholder(R.drawable.logoimg).error(R.drawable.logoimg).into(holder.episodeThumbnail)
+        }
+
         holder.layEpisode.setOnClickListener()
         {
             listener.OnVideoitemClick(currentItem.video_path.toString())

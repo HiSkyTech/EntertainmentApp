@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".Util.MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,9 +17,18 @@
         android:theme="@style/Theme.EntertainmentApp"
         tools:targetApi="31">
         <activity
+            android:name=".Ui.ActivityOnSeasonClick"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.ActivitySeasonsViewMore"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.ActivityDramaViewMore"
+            android:exported="false" />
+        <activity
             android:name=".Ui.ActivtyPlayer"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Ui.ActivityOnDramaClick"
             android:exported="false" />
@@ -30,9 +40,15 @@
             android:exported="false" />
         <activity
             android:name=".Ui.ActivityLogin"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Ui.ActivitySignUp"
+            android:exported="true" />
+        <activity
+            android:name=".Ui.ActivityUserChoice"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.ActivitySplash"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,12 +56,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Ui.ActivityUserChoice"
-            android:exported="false" />
-        <activity
-            android:name=".Ui.ActivitySplash"
-            android:exported="true" />
         <activity
             android:name=".Ui.MainActivity"
             android:exported="true">
