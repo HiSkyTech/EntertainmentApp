@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityDeleteAccount">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Account Information and Deletion Policy"
+    android:textStyle="bold"
+    android:id="@+id/t1"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="50dp"
+    android:textSize="19dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/t1"
+        android:padding="19dp"
+        android:id="@+id/t2"
+        android:text="We value your privacy and want to inform you that while creating your account, we collect the following information: your profile photo, email address or mobile number, and name.
+If you wish to delete your account, please provide the correct information below. We will proceed with the deletion of your account and notify you via the email address or mobile number associated with your account. This deletion will include your email or mobile number, password, name, and profile photo."
+/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/name"
+        android:padding="9dp"
+        android:layout_below="@id/t2"
+        android:textStyle="bold"
+        android:textSize="16dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:id="@+id/et1"
+        android:textSize="14dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Enter Your Name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email Address OR Mobile Number"
+        android:id="@+id/email"
+        android:padding="9dp"
+        android:layout_below="@id/et1"
+        android:textStyle="bold"
+        android:textSize="16dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email"
+        android:textSize="14dp"
+        android:id="@+id/et2"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Enter Your Email or Mobile Number"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et2"
+        android:text="Request  Account Deletion"
+        app:cornerRadius="0dp"
+        android:id="@+id/btn"
+        android:layout_marginHorizontal="60dp"
+        android:backgroundTint="#DC0E0E"
+        android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+</ScrollView>

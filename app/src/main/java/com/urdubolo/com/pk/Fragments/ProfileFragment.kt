@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.urdubolo.com.pk.ActivityDeleteAccount
 import com.urdubolo.com.pk.Interfaces.ApiInterFace
 import com.urdubolo.com.pk.Interfaces.UserLogoutId
 import com.urdubolo.com.pk.Model.ModelLogoutResponse
@@ -52,6 +53,9 @@ class ProfileFragment : Fragment() {
             }
             imgbell.setOnClickListener {
                 Toast.makeText(requireContext(), "Available Soon!!", Toast.LENGTH_SHORT).show()
+            }
+            del.setOnClickListener {
+              startActivity(Intent(requireContext(),ActivityDeleteAccount::class.java))
             }
         }
         return binding.root
