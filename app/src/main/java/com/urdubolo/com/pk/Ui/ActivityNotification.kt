@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.urdubolo.com.pk.R
+import com.urdubolo.com.pk.databinding.ActivityNotificationBinding
 
 class ActivityNotification : AppCompatActivity() {
+    private lateinit var binding:ActivityNotificationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
